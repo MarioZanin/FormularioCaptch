@@ -1,9 +1,10 @@
 #Formulario Captch
-Criado um formul·rio base utilizando HTML, CSS e JavaScript funcional, onde, ao se realizar o envio
-este devolve as informaÁıes obtidas em outra p·gina.
-Foi implementado uma p·gina (formul·rio) que seja publicamente acessÌvel contendo um CAPTCHA que impeÁa 
-que o formul·rio seja ìpostadoî automaticamente. 
-N„o È necess·rio que os dados do formul·rio sejam gravados em banco de dados (para simplificar a execuÁ„o
+
+Criado um formul√°rio base utilizando HTML, CSS e JavaScript funcional, onde, ao se realizar o envio
+este devolve as informa√ß√µes obtidas em outra p√°gina.
+Foi implementado uma p√°gina (formul√°rio) que seja publicamente acess√≠vel contendo um CAPTCHA que impe√ßa 
+que o formul√°rio seja ‚Äúpostado‚Äù automaticamente. 
+N√£o √© necess√°rio que os dados do formul√°rio sejam gravados em banco de dados (para simplificar a execu√ß√£o
 desta tarefa) - Tanto a linguagem como a infraestrutura de hospedagem foram de livre escolha. 
-Como sugest„o para implementaÁ„o: reCAPTCHA do Google 
-Como sugest„o para hospedagem: ServiÁo de aplicativo da sua conta de estudante no Azure ou a sua conta na AWS Academy
+Como sugest√£o para implementa√ß√£o: reCAPTCHA do Google 
+Como sugest√£o para hospedagem: Servi√ßo de aplicativo da sua conta de estudante no Azure ou a sua conta na AWS Academy
