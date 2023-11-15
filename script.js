@@ -1,4 +1,4 @@
-function submitForm('6LeSzBApAAAAAPjsa_dNEHVPZQzx5q4TwBgiQqTf') {
+function submitForm(siteKey) {
   var name = document.getElementById('name').value;
   var address = document.getElementById('address').value;
   var neighborhood = document.getElementById('neighborhood').value;
@@ -31,12 +31,12 @@ function submitForm('6LeSzBApAAAAAPjsa_dNEHVPZQzx5q4TwBgiQqTf') {
         if (response.success) {
           // Se a verificação for bem-sucedida, envie os dados do formulário para a nova página
           window.location.href = 'resultado.html?name=' + encodeURIComponent(name) +
-          '&address=' + encodeURIComponent(address) +
-          '&neighborhood=' + encodeURIComponent(neighborhood) +
-          '&city=' + encodeURIComponent(city) +
-          '&state=' + encodeURIComponent(state) +
-          '&phone=' + encodeURIComponent(phone) +
-          '&message=' + encodeURIComponent(message);        } else {
+                                '&address=' + encodeURIComponent(address) +
+                                '&neighborhood=' + encodeURIComponent(neighborhood) +
+                                '&city=' + encodeURIComponent(city) +
+                                '&state=' + encodeURIComponent(state) +
+                                '&phone=' + encodeURIComponent(phone) +
+                                '&message=' + encodeURIComponent(message);        } else {
           // Se a verificação falhar, trate de acordo (por exemplo, exiba uma mensagem de erro)
           console.error('Falha na verificação reCAPTCHA');
         }
@@ -56,5 +56,5 @@ function onClick(event) {
   var siteKey = '6LeSzBApAAAAAPjsa_dNEHVPZQzx5q4TwBgiQqTf';
 
   // Chame a função submitForm para processar o formulário
-  submitForm('6LeSzBApAAAAAPjsa_dNEHVPZQzx5q4TwBgiQqTf');
+  submitForm(siteKey);
 }
