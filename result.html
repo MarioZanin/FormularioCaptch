@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resultado do Formulário</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<h2>Resultado do Formulário</h2>
+
+<script>
+  // Função para obter parâmetros da URL
+  function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  }
+
+  // Obter parâmetros da URL
+  var name = getParameterByName('name');
+  var address = getParameterByName('address');
+  var neighborhood = getParameterByName('neighborhood');
+  var city = getParameterByName('city');
+  var state = getParameterByName('state');
+  var phone = getParameterByName('phone');
+  var message = getParameterByName('message');
+
+  // Exibir os dados na página
+  document.write("<p><strong>Nome:</strong> " + name + "</p>");
+  document.write("<p><strong>Endereço:</strong> " + address + "</p>");
+  document.write("<p><strong>Bairro:</strong> " + neighborhood + "</p>");
+  document.write("<p><strong>Cidade:</strong> " + city + "</p>");
+  document.write("<p><strong>Estado:</strong> " + state + "</p>");
+  document.write("<p><strong>Telefone:</strong> " + phone + "</p>");
+  document.write("<p><strong>Mensagem:</strong> " + message + "</p>");
+</script>
+
+</body>
+</html>

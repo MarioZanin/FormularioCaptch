@@ -30,8 +30,13 @@ function submitForm(siteKey) {
         // Verifique a resposta da API do reCAPTCHA
         if (response.success) {
           // Se a verificação for bem-sucedida, envie os dados do formulário para a nova página
-          displayFormData(name, address, neighborhood, city, state, phone, message);
-        } else {
+          window.location.href = 'resultado.html?name=' + encodeURIComponent(name) +
+          '&address=' + encodeURIComponent(address) +
+          '&neighborhood=' + encodeURIComponent(neighborhood) +
+          '&city=' + encodeURIComponent(city) +
+          '&state=' + encodeURIComponent(state) +
+          '&phone=' + encodeURIComponent(phone) +
+          '&message=' + encodeURIComponent(message);        } else {
           // Se a verificação falhar, trate de acordo (por exemplo, exiba uma mensagem de erro)
           console.error('Falha na verificação reCAPTCHA');
         }
@@ -40,21 +45,6 @@ function submitForm(siteKey) {
       xhr.send(params);
     });
   });
-}
-
-function displayFormData(name, address, neighborhood, city, state, phone, message) {
-  // Crie uma nova página HTML para exibir os dados do formulário
-  var newPage = window.open('');
-  var result = "Nome: " + name + "<br>" +
-               "Endereço: " + address + "<br>" +
-               "Bairro: " + neighborhood + "<br>" +
-               "Cidade: " + city + "<br>" +
-               "Estado: " + state + "<br>" +
-               "Telefone: " + phone + "<br>" +
-               "Mensagem: " + message;
-
-  // Exiba os dados na nova página
-  newPage.document.write(result);
 }
 
 function onClick(event) {
