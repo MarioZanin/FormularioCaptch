@@ -5,11 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulário</title>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="script.js"></script>
   <script src="https://www.google.com/recaptcha/api.js?render=6LeSzBApAAAAAPjsa_dNEHVPZQzx5q4TwBgiQqTf"></script><!--reCAPTCHA_site_key-->
 </head>
 <body>
 
-<form id="myForm">
+<form id="myForm" method="post">
+  <div class="g-recaptcha" data-sitekey="6LeSzBApAAAAAPjsa_dNEHVPZQzx5q4TwBgiQqTf"></div>
+
   <label for="name">Nome:</label>
   <input type="text" id="name" name="name" required>
 
@@ -31,9 +34,7 @@
   <label for="message">Mensagem:</label>
   <textarea id="message" name="message" rows="4" required></textarea>
 
-  <button type="button" onclick="onClick(event)">Enviar</button>
+  <button type="submit" onclick="onClick(event)">Enviar</button>
 </form>
-
-<script src="script.js"></script>
 </body>
 </html>
