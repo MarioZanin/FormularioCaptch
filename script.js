@@ -49,11 +49,11 @@ function submitForm('6LeSzBApAAAAAPjsa_dNEHVPZQzx5q4TwBgiQqTf') {
 
 function onClick(event) {
   event.preventDefault();
-  grecaptcha.ready(function() {
-    grecaptcha.execute('6LeSzBApAAAAAPjsa_dNEHVPZQzx5q4TwBgiQqTf', {action: 'submit'}).then(function(token) {
+  //grecaptcha.ready(function() {
+  //grecaptcha.execute('6LeSzBApAAAAAPjsa_dNEHVPZQzx5q4TwBgiQqTf', {action: 'submit'}).then(function(token) {
   
   // Substitua 'reCAPTCHA_site_key' pela sua chave do site reCAPTCHA
-  //var siteKey = '6LeSzBApAAAAAPjsa_dNEHVPZQzx5q4TwBgiQqTf';
+  var siteKey = '6LeSzBApAAAAAPjsa_dNEHVPZQzx5q4TwBgiQqTf';
 
   // Chame a função submitForm para processar o formulário
   submitForm('6LeSzBApAAAAAPjsa_dNEHVPZQzx5q4TwBgiQqTf');
