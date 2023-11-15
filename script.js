@@ -1,4 +1,4 @@
-function submitForm(siteKey) {
+function submitForm('6LeSzBApAAAAAPjsa_dNEHVPZQzx5q4TwBgiQqTf') {
   var name = document.getElementById('name').value;
   var address = document.getElementById('address').value;
   var neighborhood = document.getElementById('neighborhood').value;
@@ -49,14 +49,12 @@ function submitForm(siteKey) {
 
 function onClick(event) {
   event.preventDefault();
-//  grecaptcha.ready(function() {
-//    grecaptcha.execute('6LeSzBApAAAAAPjsa_dNEHVPZQzx5q4TwBgiQqTf', {action: 'submit'}).then(function(token) {
+  grecaptcha.ready(function() {
+    grecaptcha.execute('6LeSzBApAAAAAPjsa_dNEHVPZQzx5q4TwBgiQqTf', {action: 'submit'}).then(function(token) {
   
   // Substitua 'reCAPTCHA_site_key' pela sua chave do site reCAPTCHA
- var siteKey = '6LeSzBApAAAAAPjsa_dNEHVPZQzx5q4TwBgiQqTf';
+  //var siteKey = '6LeSzBApAAAAAPjsa_dNEHVPZQzx5q4TwBgiQqTf';
 
   // Chame a função submitForm para processar o formulário
-  submitForm(siteKey);
+  submitForm('6LeSzBApAAAAAPjsa_dNEHVPZQzx5q4TwBgiQqTf');
 }
-
-
