@@ -13,7 +13,7 @@ function submitForm('6LeSzBApAAAAAPjsa_dNEHVPZQzx5q4TwBgiQqTf') {
   // Substitua 'reCAPTCHA_site_key' pela sua chave do site reCAPTCHA
   var recaptchaToken;
   grecaptcha.ready(function() {
-    grecaptcha.execute('6LeSzBApAAAAAPjsa_dNEHVPZQzx5q4TwBgiQqTf', { action: 'submit' }).then(function(token) {
+    grecaptcha.execute(siteKey, { action: 'submit' }).then(function(token) {
       recaptchaToken = token;
 
       // Envie a solicitação POST para a API do reCAPTCHA
