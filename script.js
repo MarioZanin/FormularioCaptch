@@ -29,6 +29,7 @@ function onClick(event) {
    
 
   // Execute o reCAPTCHA
+  grecaptcha.ready(function() {
   grecaptcha.execute(recaptchaSiteKey, { action: 'submit' }).then(function(token) {
     // Obtenha os dados do formulário
     var name = document.getElementById('name').value;
@@ -63,5 +64,5 @@ function onClick(event) {
 
     // Redirecione para a página simulada
     window.location.href = simulatedUrl;
-  });
+  })};
 }
