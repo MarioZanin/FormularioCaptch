@@ -18,6 +18,15 @@ xhrConfig.send();
 // Função chamada pelo reCAPTCHA após a verificação bem-sucedida
 function onClick(event) {
   event.preventDefault();
+    //grecaptcha.ready(function() {
+    //grecaptcha.execute('siteKey', {action: 'submit'}).then(function(token) {
+    
+    // Substitua 'reCAPTCHA_site_key' pela sua chave do site reCAPTCHA
+    //var siteKey = '6LeSzBApAAAAAPjsa_dNEHVPZQzx5q4TwBgiQqTf';
+  
+    // Chame a função submitForm para processar o formulário
+    //submitForm(siteKey);
+   
 
   // Execute o reCAPTCHA
   grecaptcha.execute(recaptchaSiteKey, { action: 'submit' }).then(function(token) {
@@ -56,4 +65,3 @@ function onClick(event) {
     window.location.href = simulatedUrl;
   });
 }
-
