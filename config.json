@@ -1,0 +1,12 @@
+{
+  "recaptcha": {
+    "siteKey": "6LeSzBApAAAAAPjsa_dNEHVPZQzx5q4TwBgiQqTf",
+    "secretKey": "6LeSzBApAAAAAFCNulGKzbAKDPKs0JebR2XJCB6-"
+  },
+  "messages": {
+    "success": "Formulário enviado com sucesso!",
+    "recaptchaError": "Falha na verificação reCAPTCHA. Tente novamente.",
+    "serverError": "Erro ao enviar o formulário para o servidor. Tente novamente mais tarde."
+  },
+  "apiUrl": "https://www.example.com/processar-formulario"
+}
