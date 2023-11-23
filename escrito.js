@@ -11,18 +11,28 @@ xhrConfig.onreadystatechange = function() {
     }
   }
 };
+
 xhrConfig.open('GET', 'config.json', false);
 xhrConfig.send();
 
 // Função chamada pelo reCAPTCHA após a verificação bem-sucedida
 function onClick(event) {
   event.preventDefault();
+    //grecaptcha.ready(function() {
+    //grecaptcha.execute('siteKey', {action: 'submit'}).then(function(token) {
+    
+    // Substitua 'reCAPTCHA_site_key' pela sua chave do site reCAPTCHA
+    //var siteKey = '6LeSzBApAAAAAPjsa_dNEHVPZQzx5q4TwBgiQqTf';
+  
+    // Chame a função submitForm para processar o formulário
+    //submitForm(siteKey);
+   
 
   // Execute o reCAPTCHA
+  grecaptcha.ready(function() {
   grecaptcha.execute(recaptchaSiteKey, { action: 'submit' }).then(function(token) {
     // Obtenha os dados do formulário
     var name = document.getElementById('name').value;
-    var email = document.getElementById('email').value;
     var address = document.getElementById('address').value;
     var neighborhood = document.getElementById('neighborhood').value;
     var city = document.getElementById('city').value;
@@ -32,7 +42,6 @@ function onClick(event) {
 
     // Codifique os dados do formulário para inclusão na URL
     var encodedName = encodeURIComponent(name);
-    var encodedEmail = encodeURIComponent(email);
     var encodedAddress = encodeURIComponent(address);
     var encodedNeighborhood = encodeURIComponent(neighborhood);
     var encodedCity = encodeURIComponent(city);
@@ -45,7 +54,6 @@ function onClick(event) {
 
     // Adicione os parâmetros à URL
     simulatedUrl += '?name=' + encodedName +
-                   '&email=' + encodedEmail +
                    '&address=' + encodedAddress +
                    '&neighborhood=' + encodedNeighborhood +
                    '&city=' + encodedCity +
@@ -56,5 +64,5 @@ function onClick(event) {
 
     // Redirecione para a página simulada
     window.location.href = simulatedUrl;
-  });
+  })};
 }
