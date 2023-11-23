@@ -23,6 +23,7 @@
 
   // Obter parâmetros da URL
   var name = getParameterByName('name');
+  var email = getParameterByName('email');
   var address = getParameterByName('address');
   var neighborhood = getParameterByName('neighborhood');
   var city = getParameterByName('city');
@@ -32,6 +33,7 @@
 
   // Exibir os dados na página
   document.write("<p><strong>Nome:</strong> " + name + "</p>");
+  document.write("<p><strong>E-mail:</strong> " + email + "</p>");
   document.write("<p><strong>Endereço:</strong> " + address + "</p>");
   document.write("<p><strong>Bairro:</strong> " + neighborhood + "</p>");
   document.write("<p><strong>Cidade:</strong> " + city + "</p>");
