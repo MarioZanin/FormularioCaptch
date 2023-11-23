@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 const transporter = nodemailer.createTransport({
   host: process.env.EMAIL_HOST,
   port: process.env.EMAIL_PORT,
-  secure: true,
+  secure: false,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS
@@ -32,20 +32,12 @@ app.post('/processar-formulario', async (req, res) => {
 
     if (recaptchaResponse.data.success) {
       // Envia o e-mail de confirmação para o e-mail fornecido no formulário
-      const emailBody = 
-       Nome: ${name}
-       E-mail: ${email}
-       Endereço: ${address}
-       Bairro: ${neighborhood}
-       Cidade: ${city}
-       Estado: ${state}
-       Telefone: ${phone}
-       Mensagem: ${message}
-       Obrigado por preencher o formulário, ${name}!
+      const emailBody = `
+        Obrigado por preencher o formulário, ${name}!
 
-       Para confirmar sua identidade, clique no link a seguir:
+        Para confirmar sua identidade, clique no link a seguir:
         http://seusite.com/confirmar?email=${email}&token=${recaptchaToken}
-      ;
+      `;
 
       const mailOptions = {
         from: process.env.EMAIL_SENDER,
@@ -60,7 +52,8 @@ app.post('/processar-formulario', async (req, res) => {
           res.status(500).send('Erro ao processar o formulário.');
         } else {
           console.log('E-mail de confirmação enviado:', info.response);
-          res.status(200).send('Formulário processado com sucesso!');
+          // Agora, você pode decidir se deseja processar o formulário imediatamente ou aguardar a confirmação
+          res.status(200).send('E-mail de confirmação enviado com sucesso!');
         }
       });
     } else {
@@ -79,25 +72,11 @@ app.get('/confirmar', (req, res) => {
 
   // Verifica se o token é válido (pode incluir lógica mais robusta)
   if (token) {
-    // Envia e-mail de confirmação para mariozanin5@gmail.com
-    const emailBody = `Identidade confirmada para o e-mail: ${email}`;
+    // Aqui você pode adicionar lógica adicional se necessário antes de processar o formulário
+    // ...
 
-    const mailOptions = {
-      from: process.env.EMAIL_SENDER,
-      to: 'mariozanin5@gmail.com', // Destinatário fixo para confirmação
-      subject: 'Confirmação de Identidade',
-      text: emailBody
-    };
-  // Processa o formulário
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.error('Erro ao enviar e-mail de confirmação:', error);
-        res.status(500).send('Erro ao confirmar identidade.');
-      } else {
-        console.log('E-mail de confirmação enviado:', info.response);
-        res.status(200).send('Identidade confirmada com sucesso!');
-      }
-    });
+    // Processa o formulário
+    res.status(200).send('Identidade confirmada. Formulário processado com sucesso!');
   } else {
     console.error('Token inválido.');
     res.status(400).send('Token inválido.');
