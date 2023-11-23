@@ -31,8 +31,8 @@ app.post('/processar-formulario', async (req, res) => {
     const recaptchaResponse = await axios.post(recaptchaUrl);
 
     if (recaptchaResponse.data.success) {
-       // Envie o e-mail com os dados do formulário
-       const emailBody = `
+      // Envia o e-mail de confirmação para o e-mail fornecido no formulário
+      const emailBody = 
        Nome: ${name}
        E-mail: ${email}
        Endereço: ${address}
@@ -44,8 +44,8 @@ app.post('/processar-formulario', async (req, res) => {
        Obrigado por preencher o formulário, ${name}!
 
        Para confirmar sua identidade, clique no link a seguir:
-       http://seusite.com/confirmar?email=${email}&token=${recaptchaToken}
-     `;
+        http://seusite.com/confirmar?email=${email}&token=${recaptchaToken}
+      ;
 
       const mailOptions = {
         from: process.env.EMAIL_SENDER,
@@ -88,7 +88,7 @@ app.get('/confirmar', (req, res) => {
       subject: 'Confirmação de Identidade',
       text: emailBody
     };
-
+  // Processa o formulário
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.error('Erro ao enviar e-mail de confirmação:', error);
