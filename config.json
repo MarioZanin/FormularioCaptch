@@ -8,5 +8,5 @@
     "recaptchaError": "Falha na verificação reCAPTCHA. Tente novamente.",
     "serverError": "Erro ao enviar o formulário para o servidor. Tente novamente mais tarde."
   },
-  "apiUrl": "https://www.example.com/processar-formulario"
+  "apiUrl": "https://github.com/MarioZanin/FormularioCaptch/blob/master/processar-formulario.html"
 }
