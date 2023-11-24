@@ -1,4 +1,3 @@
-const jwt = require('jsonwebtoken');
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
@@ -21,11 +20,6 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-// Função para gerar um token de confirmação
-function generateConfirmationToken(email) {
-  return jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: '1h' });
-}
-
 // Rota para processar o formulário
 app.post('/processar-formulario', async (req, res) => {
   const { name, email, address, neighborhood, city, state, phone, message, recaptchaToken } = req.body;
@@ -37,20 +31,17 @@ app.post('/processar-formulario', async (req, res) => {
     const recaptchaResponse = await axios.post(recaptchaUrl);
 
     if (recaptchaResponse.data.success) {
-      // Gera o token de confirmação
-      const confirmationToken = generateConfirmationToken(email);
-
-      // Envia o e-mail de confirmação com o token
+      // Envia o e-mail de confirmação para o e-mail fornecido no formulário
       const emailBody = `
         Obrigado por preencher o formulário, ${name}!
-       
+
         Para confirmar sua identidade, clique no link a seguir:
-        https://github.com/MarioZanin//confirmar?email=${email}&token=${confirmationToken}
+        http://seusite.com/confirmar?email=${email}&token=${recaptchaToken}
       `;
 
       const mailOptions = {
-        from: process.env.EMAIL_USER,  // Use o remetente configurado no seu .env
-        to: email,  // Usa o e-mail fornecido no formulário como destinatário
+        from: process.env.EMAIL_SENDER,
+        to: email,
         subject: 'Confirmação de Identidade',
         text: emailBody
       };
@@ -67,8 +58,7 @@ app.post('/processar-formulario', async (req, res) => {
       });
     } else {
       console.error('Falha na verificação reCAPTCHA');
-      //res.status(400).send('Falha na verificação reCAPTCHA.');
-      res.status(400).json({ success: false, error: 'Falha na verificação reCAPTCHA.' });
+      res.status(400).send('Falha na verificação reCAPTCHA.');
     }
   } catch (error) {
     console.error('Erro na verificação reCAPTCHA:', error.message);
@@ -76,21 +66,21 @@ app.post('/processar-formulario', async (req, res) => {
   }
 });
 
-
 // Rota para confirmar a identidade
 app.get('/confirmar', (req, res) => {
   const { email, token } = req.query;
 
-  // Verifica se o token é válido
-  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-    if (err) {
-      console.error('Token inválido:', err);
-      return res.status(400).send('Token inválido.');
-    }
+  // Verifica se o token é válido (pode incluir lógica mais robusta)
+  if (token) {
+    // Aqui você pode adicionar lógica adicional se necessário antes de processar o formulário
+    // ...
 
-  // Processa o formulário
+    // Processa o formulário
     res.status(200).send('Identidade confirmada. Formulário processado com sucesso!');
-  });
+  } else {
+    console.error('Token inválido.');
+    res.status(400).send('Token inválido.');
+  }
 });
 
 app.listen(PORT, () => {

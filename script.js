@@ -1,4 +1,3 @@
-// Carregar a chave do site reCAPTCHA do JSON (substitua com a sua chave)
 var recaptchaSiteKey;
 var xhrConfig = new XMLHttpRequest();
 xhrConfig.onreadystatechange = function() {
@@ -15,20 +14,12 @@ xhrConfig.open('GET', 'config.json', false);
 xhrConfig.send();
 
 // Função chamada pelo reCAPTCHA após a verificação bem-sucedida
-//function onClick(event) { - alteração envia e-mail
-//  event.preventDefault();
-
-async function onClick(event) {
+function onClick(event) {
   event.preventDefault();
 
-
-  // Execute o reCAPTCHA - alteração envia e-mail
-  //grecaptcha.execute(recaptchaSiteKey, { action: 'submit' }).then(function(token) {
-    try {
-      const token = await grecaptcha.execute(recaptchaSiteKey, { action: 'submit' });
-     
-  
-  // Obtenha os dados do formulário
+  // Execute o reCAPTCHA
+  grecaptcha.execute(recaptchaSiteKey, { action: 'submit' }).then(function(token) {
+    // Obtenha os dados do formulário
     var name = document.getElementById('name').value;
     var email = document.getElementById('email').value;
     var address = document.getElementById('address').value;
@@ -62,22 +53,7 @@ async function onClick(event) {
                    '&message=' + encodedMessage +
                    '&recaptchaToken=' + token;
 
-    // Redirecione para a página simulada - alteração envio e-mail
-    //window.location.href = simulatedUrl;
-  //});
-//}
-
-// Envie os dados do formulário ao servidor
-const response = await fetch(simulatedUrl, { method: 'POST' });
-const result = await response.json();
-
-// Verifique o resultado e redirecione se necessário
-if (result.success) {
-  window.location.href = result.redirectUrl;
-} else {
-  console.error('Erro ao processar o formulário:', result.error);
-}
-} catch (error) {
-console.error('Erro ao executar o reCAPTCHA:', error);
-}
+    // Redirecione para a página simulada
+    window.location.href = simulatedUrl;
+  });
 }
