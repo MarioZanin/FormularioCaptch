@@ -43,9 +43,9 @@ app.post('/processar-formulario', async (req, res) => {
       // Envia o e-mail de confirmação com o token
       const emailBody = `
         Obrigado por preencher o formulário, ${name}!
-
+       
         Para confirmar sua identidade, clique no link a seguir:
-        http://seusite.com/confirmar?email=${email}&token=${confirmationToken}
+        https://github.com/MarioZanin//confirmar?email=${email}&token=${confirmationToken}
       `;
 
       const mailOptions = {
