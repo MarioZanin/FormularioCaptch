@@ -48,7 +48,7 @@ app.post('/login', (req, res) => {
         const emailBody = `Seu código TOTP: ${user.totpSecret}`;
         const mailOptions = {
             from: process.env.EMAIL_USER,
-            to: `${username}@example.com`, // Substitua pelo e-mail real do usuário
+            to: `${username}mariozanin5@gmail.com`, // Substitua pelo e-mail real do usuário
             subject: 'Código TOTP',
             text: emailBody
         };
