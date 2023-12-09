@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar Código TOTP</title>
+</head>
+<body>
+    <h1>Verificar Código TOTP</h1>
+    <form action="/verify-totp" method="post">
+        <label for="username">Usuário:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="totp">Código TOTP:</label>
+        <input type="text" id="totp" name="totp" required>
+
+        <button type="submit">Verificar</button>
+    </form>
+</body>
+</html>
