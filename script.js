@@ -10,7 +10,7 @@ xhrConfig.onreadystatechange = function() {
     }
   }
 };
-xhrConfig.open('GET', 'config.json', false);
+xhrConfig.open('POST', 'config.json', false);
 xhrConfig.send();
 
 // Função chamada pelo reCAPTCHA após a verificação bem-sucedida
