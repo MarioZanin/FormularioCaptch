@@ -14,46 +14,36 @@ xhrConfig.open('GET', 'config.json', false);
 xhrConfig.send();
 
 // Função chamada pelo reCAPTCHA após a verificação bem-sucedida
-function onClick(event) {
+async function onClick(event) {
   event.preventDefault();
 
   // Execute o reCAPTCHA
-  grecaptcha.execute(recaptchaSiteKey, { action: 'submit' }).then(function(token) {
-    // Obtenha os dados do formulário
-    var name = document.getElementById('name').value;
-    var email = document.getElementById('email').value;
-    var address = document.getElementById('address').value;
-    var neighborhood = document.getElementById('neighborhood').value;
-    var city = document.getElementById('city').value;
-    var state = document.getElementById('state').value;
-    var phone = document.getElementById('phone').value;
-    var message = document.getElementById('message').value;
+  const recaptchaToken = await grecaptcha.execute(recaptchaSiteKey, { action: 'submit' });
 
-    // Codifique os dados do formulário para inclusão na URL
-    var encodedName = encodeURIComponent(name);
-    var encodedEmail = encodeURIComponent(email);
-    var encodedAddress = encodeURIComponent(address);
-    var encodedNeighborhood = encodeURIComponent(neighborhood);
-    var encodedCity = encodeURIComponent(city);
-    var encodedState = encodeURIComponent(state);
-    var encodedPhone = encodeURIComponent(phone);
-    var encodedMessage = encodeURIComponent(message);
+ // Obtenha os dados do formulário
+ const name = document.getElementById('name').value;
+ const email = document.getElementById('email').value;
+ const address = document.getElementById('address').value;
+ const neighborhood = document.getElementById('neighborhood').value;
+ const city = document.getElementById('city').value;
+ const state = document.getElementById('state').value;
+ const phone = document.getElementById('phone').value;
+ const message = document.getElementById('message').value;
 
-    // Crie a URL da página simulada de processamento
-    var simulatedUrl = 'processar-formulario.html';
+ // Codifique os dados do formulário para inclusão na URL
+ const encodedName = encodeURIComponent(name);
+ const encodedEmail = encodeURIComponent(email);
+ const encodedAddress = encodeURIComponent(address);
+ const encodedNeighborhood = encodeURIComponent(neighborhood);
+ const encodedCity = encodeURIComponent(city);
+ const encodedState = encodeURIComponent(state);
+ const encodedPhone = encodeURIComponent(phone);
+ const encodedMessage = encodeURIComponent(message);
 
-    // Adicione os parâmetros à URL
-    simulatedUrl += '?name=' + encodedName +
-                   '&email=' + encodedEmail +
-                   '&address=' + encodedAddress +
-                   '&neighborhood=' + encodedNeighborhood +
-                   '&city=' + encodedCity +
-                   '&state=' + encodedState +
-                   '&phone=' + encodedPhone +
-                   '&message=' + encodedMessage +
-                   '&recaptchaToken=' + token;
+   // Crie a URL da página simulada de confirmação
+  const confirmationUrl = ` https://mariozanin.github.io/FormularioCaptch/confirmar?name=${encodedName}&email=${encodedEmail}&address=${encodedAddress}&neighborhood=${encodedNeighborhood}&city=${encodedCity}&state=${encodedState}&phone=${encodedPhone}&message=${encodedMessage}&recaptchaToken=${recaptchaToken}`;
+ 
 
-    // Redirecione para a página simulada
-    window.location.href = simulatedUrl;
-  });
+   // Redirecione para a página de confirmação
+  window.location.href = confirmationUrl;
 }
