@@ -67,15 +67,15 @@ app.post('/processar-formulario', async (req, res) => {
 });
 
 // Rota para confirmar a identidade
-app.get('/confirmar', (req, res) => {
-    const { email, token } = req.query;
-  
- // Seu código existente...
-
-// Rota para confirmar a identidade
 app.post('/confirmar', (req, res) => {
-    const { name, email, address, neighborhood, city, state, phone, message, recaptchaToken } = req.body;
-  
+    const { email, token } = req.body;
+
+
+
+
+
+
+
     // Verifique se o token é válido (pode incluir lógica mais robusta)
     if (recaptchaToken) {
       // Envie o e-mail de confirmação para o e-mail fornecido no formulário
@@ -108,6 +108,8 @@ app.post('/confirmar', (req, res) => {
     }
   });
   
+
+
   // Rota para processar o formulário após a confirmação
   app.post('/processar-formulario', async (req, res) => {
     const { name, email, address, neighborhood, city, state, phone, message, recaptchaToken } = req.body;
@@ -130,5 +132,8 @@ app.post('/confirmar', (req, res) => {
       console.error('Erro na verificação reCAPTCHA:', error.message);
       res.status(500).send('Erro ao processar o formulário.');
     }
+  });
+  app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
   });
   
