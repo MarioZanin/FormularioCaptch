@@ -41,7 +41,7 @@ async function onClick(event) {
  const encodedMessage = encodeURIComponent(message);
 
    // Crie a URL da página simulada de confirmação
-  const confirmationUrl = ` https://mariozanin.github.io/FormularioCaptch/confirmar?name=${encodedName}&email=${encodedEmail}&address=${encodedAddress}&neighborhood=${encodedNeighborhood}&city=${encodedCity}&state=${encodedState}&phone=${encodedPhone}&message=${encodedMessage}&recaptchaToken=${recaptchaToken}`;
+  const confirmationUrl = ` https://mariozanin.github.io/FormularioCaptch/processa-formulário?name=${encodedName}&email=${encodedEmail}&address=${encodedAddress}&neighborhood=${encodedNeighborhood}&city=${encodedCity}&state=${encodedState}&phone=${encodedPhone}&message=${encodedMessage}&recaptchaToken=${recaptchaToken}`;
  
 
    // Redirecione para a página de confirmação
