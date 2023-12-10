@@ -36,7 +36,7 @@ app.post('/processar-formulario', async (req, res) => {
         Obrigado por preencher o formulário, ${name}!
 
         Para confirmar sua identidade, clique no link a seguir:
-        https://mariozanin.github.io/FormularioCaptch/index.hyml/confirmar?email=${email}&token=${recaptchaToken}
+        https://mariozanin.github.io/FormularioCaptch/index.html/confirmar?email=${email}&token=${recaptchaToken}
       `;
 
       const mailOptions = {
